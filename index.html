@@ -1,1 +1,553 @@
-<h1> hello! </h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+    <style>
+        /* Site style guide:
+        {
+            main color: #2C3E50;
+            secondary colors: #808B96, #566573;
+            complimantary (focus) color: #F7DC6F;
+            text color (dark background): white;
+            text color (light background): black;
+            hierarchy of sizes:
+            {
+                h1>h2>p;
+                h1: main block headlines;
+                h2: small headlines inside blocks;
+                p: small reading text;
+            }
+        }
+        */
+        /* Page setup design */
+            div.mainblock{
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            div.mainblock:nth-child(odd){
+                background-color:#566573;
+            }
+            div.mainblock:nth-child(even){
+                background-color:#808B96;
+            }
+            body{
+                background-color: #273746;
+                height: 100%;
+                height: 100%;
+                overflow-x: hidden;
+                margin: 0px;
+                padding: 0px;
+            }
+            h1, h2, p{
+                color: white;
+            }
+            h1{
+                margin-top: 0px;
+            }
+            h2{
+                font-size: 24px;
+            }
+            .collapse, .collapsing{
+                background-color: #2C3E50;
+            }
+        /* Nav bar design */
+            ul.nav a:hover{
+                color: black !important;
+                background-color: #F7DC6F !important;
+            }
+            ul.nav a:focus{
+                color: white !important;
+                background-color: #273746 !important;
+            }
+            ul.nav > li > a{
+                color: white;
+                text-decoration: none;
+            }
+        /* hamburger menu design */
+            div.hamburger{
+                display: block;
+                margin-bottom: 3px;
+                width: 30px;
+                height: 5px;
+                background-color: white;
+                border-radius: 5px;
+            }
+            div.hamactive{
+                background-color: #F7DC6F;
+            }
+        /* Back to top button design */
+            .backtotop{
+                position: fixed;
+                right: 0;
+                bottom:0;
+                z-index: 1;
+                margin-bottom: 10px;
+                margin-right: 15px;
+                background-color: #2C3E50;
+                border-radius: 100%;
+            }
+            .backtotop:hover{
+                background-color: #F7DC6F;
+            }
+            .backtotop:focus{
+                background-color: #273746;
+            }
+            a.backtotop > img{
+                width:50px;
+                height:50px;
+            }
+        /* Scroll bar design */
+            ::-webkit-scrollbar {
+            width: 15px;
+            }
+            ::-webkit-scrollbar-track {
+            background: #ABB2B9; 
+            }
+            ::-webkit-scrollbar-thumb {
+            background: #2C3E50; 
+            }
+            ::-webkit-scrollbar-thumb:hover {
+            background: #F7DC6F; 
+            }
+        /* random single designs */
+            #backgroundvideo{
+                left: 0;
+                top: 0;
+                min-width:100%;
+                min-height: 100%;
+            }
+            img.coins{
+                min-height: 150px;
+                max-height: 150px;
+            }
+            .currdiv{
+                background-color: #566573;
+                margin-bottom: -10px;
+                margin-top:30px;
+                padding-top:10px;
+            }
+            @media only screen and (min-device-width: 768px){
+                .currdiv:hover{
+                    background-color: #F7DC6F;
+                }
+                .currdiv:hover >p{
+                    color:black;
+                }
+            }
+            .currdiv:active{
+                background-color: #2C3E50;
+            }
+            .currdivopen{
+                background-color: #2C3E50;
+            }
+            .mobilecollapse{
+                margin-top:30px;
+                padding-top:10px;
+                padding-bottom:10px;
+            }
+            .charts{
+                max-width: 100%;
+            }
+            .colchart{
+                padding:10px;
+            }
+            .testimonial{
+                background-color: #566573;
+                padding:10px;
+                margin-bottom:30px;
+            }
+            /* Spinner */
+            .glyphicon-refresh-animate {
+                -animation: spin .7s infinite linear;
+                -webkit-animation: spin2 .7s infinite linear;
+            }
+
+            @-webkit-keyframes spin2 {
+                from { -webkit-transform: rotate(0deg);}
+                to { -webkit-transform: rotate(360deg);}
+            }
+
+            @keyframes spin {
+                from { transform: scale(1) rotate(0deg);}
+                to { transform: scale(1) rotate(360deg);}
+            }
+    </style>
+</head>
+<body>
+    <a class="backtotop" href="#landing"> <img src="arrow.svg"> </a> <!-- Jump back to top -->
+    <nav class="navbar" style="background-color: #2C3E50; padding-top: 1px; position:fixed; width: 100%; z-index: 1; height: 60px"> <!--NAVBAR-->
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle hamburger" id="1" data-toggle="collapse" data-target="#myNavbar" style="cursor:pointer; margin-top:15px">
+                            <script>
+                                    $("#1").on("click", function() {
+                                        $(".hamburger").toggleClass('hamactive');
+                                    });
+                            </script>
+                            <div class="hamburger" style="margin-top: -7px"></div>
+                            <div class="hamburger"></div>  
+                            <div class="hamburger" style="margin-bottom: 0px"></div>
+                    </button>
+                        <a class="navbar-brand" style="color:white" href="#"><img src="logo.svg" style="width: 35px; height:35px"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#currencies">Currencies</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+    <div style="overflow:hidden"> <!-- Landing page -->
+        <div class="mainblock" id="landing">
+            <video autoplay muted loop id="backgroundvideo">
+                <source src="BG.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+            <div style="padding:20px; position: absolute; top:30%; width:100%; background-color: #2C3E50; opacity: 0.7; text-align: center">
+                <img src="logo.svg" style="height: 150px">
+                <h1>Pyramid S</h1>
+                <h2>your crypto investing partners</h2>
+            </div>
+        </div>
+    </div>
+    <div class="mainblock" id="about"> <!-- about -->
+        <div class="container" style="text-align:center">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>About us</h1>
+                    <p>Pyramid S is a site specialising in managing and investing your cryptocurrency</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6"  style="text-align: left">
+                    <h2>Tracking of cryptocurrency in real time:</h2>
+                    <p>With our tools and analysis we can provide you with amazing data to help you invest</p>
+                    <h2>Get help from the professionals:</h2>
+                    <p>Our team of professional investors will answer and question and help you into the world of crypto</p>
+                    <h2>crypto wallet:</h2>
+                    <p>our official wallet lets you track, transfer, deposit and pay easily and instantly</p>
+                    <h2>connect with our mobile app:</h2>
+                    <p>our site is written in a special code that automatically works on your phone and lets you use our site on the go</p>
+                </div>
+                <div class="col-sm-6"><img class="img-thumbnail" src="About.jpg"></div>
+            </div>
+        </div>
+    </div>
+    <div class="mainblock" id="currencies"> <!-- currencies + graphs -->
+        <div class="container" style="text-align:center">
+            <div class="row"> <!-- headline -->
+                <div class="col-sm-12">
+                    <h1>Our traded currencies</h1>
+                    <p>Read more about our coins by clicking their icons!</p>
+                </div>
+            </div>
+            <div class="row hidden-xs"><!-- Desktop collapse -->
+                <div class="col-sm-3">
+                    <div class="currdiv dcollapsebtn" id="dbtncollapse1">
+                        <img class="coins" src="ethereum.svg">
+                        <p>Ethereum</p>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-3">
+                    <div class="dcollapsebtn currdiv" id="dbtncollapse2">
+                        <img class="coins" src="bitcoin.svg">
+                        <p>Bitcoin</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="dcollapsebtn currdiv" id="dbtncollapse3">
+                        <img class="coins" src="dogecoin.svg">
+                        <p>Dogecoin</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="dcollapsebtn currdiv" id="dbtncollapse4">
+                        <img class="coins" src="ripple.svg">
+                        <p>Ripple</p>
+                    </div>
+                </div>
+            </div>
+            <div> <!-- desktop collapse categories -->
+                <div class="colchart row collapse" id="dcollapse1">
+                    <div class="col-sm-6">
+                        <h2>Ethereum</h2>
+                        <p>Ethereum is an open source, public, blockchain-based distributed computing platform and operating system featuring smart contract (scripting) functionality. It supports a modified version of Nakamoto consensus via transaction-based state transitions.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="charts" src="ETHchart.png">
+                    </div>
+                </div>
+                <div class="colchart row collapse" id="dcollapse2">
+                    <div class="col-sm-6">
+                        <h2>Bitcocin</h2>
+                        <p>Bitcoin is a cryptocurrency. It is a decentralized digital currency without a central bank or single administrator that can be sent from user to user on the peer-to-peer bitcoin network without the need for intermediaries.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="charts" src="BTCchart.png">
+                    </div>
+                </div>
+                <div class="colchart row collapse" id="dcollapse3">
+                    <div class="col-sm-6">
+                        <h2>Dogecoin</h2>
+                        <p>Dogecoin is a cryptocurrency featuring a likeness of the Shiba Inu dog from the "Doge" Internet meme as its logo. Introduced as a "joke currency" on 6 December 2013, Dogecoin quickly developed its own online community and reached a capitalization of US$60 million in January 2014.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="charts" src="DGCchart.png">
+                    </div>
+                </div>
+                <div class="colchart row collapse" id="dcollapse4">
+                        <div class="col-sm-6">
+                            <h2>Ripple</h2>
+                            <p>Ripple is a real-time gross settlement system, currency exchange and remittance network created by Ripple Labs Inc., a US-based technology company. Released in 2012, Ripple is built upon a distributed open source protocol, and supports tokens representing fiat currency, cryptocurrency, commodities, or other units of value such as frequent flier miles or mobile minutes. Ripple purports to enable "secure, instantly and nearly free global financial transactions of any size with no chargebacks."</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <img class="charts" src="RPLchart.png">
+                        </div>
+                </div>
+            </div>
+            <div class="row hidden-sm hidden-md hidden-lg hidden-xl"><!-- mobile collapse -->
+                <div class="currdiv collapsebtn mobilecollapse" id="btncollapse1"> <!--collapse 1-->
+                    <img class="coins" src="ethereum.svg">
+                    <p>Ethereum</p>
+                </div>
+                <div class="colchart collapse" id="collapse1">
+                    <div class="col-sm-6">
+                        <h2>Ethereum</h2>
+                        <p>Ethereum is an open source, public, blockchain-based distributed computing platform and operating system featuring smart contract (scripting) functionality. It supports a modified version of Nakamoto consensus via transaction-based state transitions.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="charts" src="ETHchart.png">
+                    </div>
+                </div>
+                <div class="currdiv collapsebtn mobilecollapse" id="btncollapse2"> <!--collapse 2-->
+                    <img class="coins" src="bitcoin.svg">
+                    <p>Bitcoin</p>
+                </div>
+                <div class="colchart collapse" id="collapse2">
+                    <div class="col-sm-6">
+                        <h2>Bitcocin</h2>
+                        <p>Bitcoin is a cryptocurrency. It is a decentralized digital currency without a central bank or single administrator that can be sent from user to user on the peer-to-peer bitcoin network without the need for intermediaries.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="charts" src="BTCchart.png">
+                    </div>
+                </div>
+                <div class="currdiv collapsebtn mobilecollapse" id="btncollapse3"> <!--collapse 3-->
+                    <img class="coins" src="dogecoin.svg">
+                    <p>Dogecoin</p>
+                </div>
+                <div class="colchart collapse" id="collapse3">
+                    <div class="col-sm-6">
+                        <h2>Dogecoin</h2>
+                        <p>Dogecoin is a cryptocurrency featuring a likeness of the Shiba Inu dog from the "Doge" Internet meme as its logo. Introduced as a "joke currency" on 6 December 2013, Dogecoin quickly developed its own online community and reached a capitalization of US$60 million in January 2014.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="charts" src="DGCchart.png">
+                    </div>
+                </div>
+                <div class="currdiv collapsebtn mobilecollapse" id="btncollapse4"> <!--collapse 4-->
+                    <img class="coins" src="ripple.svg">
+                    <p>Ripple</p>
+                </div>
+                <div class="colchart collapse" id="collapse4">
+                    <div class="col-sm-6">
+                        <h2>Ripple</h2>
+                        <p>Ripple is a real-time gross settlement system, currency exchange and remittance network created by Ripple Labs Inc., a US-based technology company. Released in 2012, Ripple is built upon a distributed open source protocol, and supports tokens representing fiat currency, cryptocurrency, commodities, or other units of value such as frequent flier miles or mobile minutes. Ripple purports to enable "secure, instantly and nearly free global financial transactions of any size with no chargebacks."</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img class="charts" src="RPLchart.png">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="mainblock" id="testimonials"> <!-- testimonials -->
+        <div class="row"  style="text-align:center"> <!-- Headline -->
+            <div class="col-sm-12"><h1>Testimonials</h1></div>
+        </div>
+        <div class="container hidden-xs" style="text-align:center"> <!--desktop testimonials-->
+            <div class="testimonial row"> <!-- testemonial 1 -->
+                <div class="col-sm-4"><img src="smile1.png"></img></div>
+                <div class="col-sm-8">
+                    <h2>Great tools for young investors!</h2>
+                    <br>
+                    <p>using the tools offered on the site my crypto investments sky rocketed!</p>
+                </div>
+            </div>
+            <div class="testimonial row"> <!-- testemonial 2 -->
+                <div class="col-sm-8">
+                    <h2>Finally, a great source of kneweledge.</h2>
+                    <br>
+                    <p>I wanted to start investing in crypto for a long time and pyramid investments finally taught me the right tools to succeed.</p>
+                </div>
+                <div class="col-sm-4"><img src="smile2.png"></img></div>
+            </div>
+            <div class="testimonial row"> <!-- testemonial 3 -->
+                <div class="col-sm-4"><img src="smile3.png"></img></div>
+                <div class="col-sm-8">
+                    <h2>good tracking!</h2>
+                    <br>
+                    <p>the tables shown on the site update in real time, the information available is precise and online supports and forums always make it so you invest for what is right for you!</p>
+                </div>
+            </div>
+        </div>
+        <div class="container hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center"> <!--Mobile testimonials-->
+            <div class="testimonial row"> <!-- testemonial 1 -->
+                <div class="col-sm-4"><img src="smile1.png"></img></div>
+                <div class="col-sm-8">
+                    <h2>Great tools for young investors!</h2>
+                    <br>
+                    <p>using the tools offered on the site my crypto investments sky rocketed!</p>
+                </div>
+            </div>
+            <div class="testimonial row"> <!-- testemonial 2 -->
+                <div class="col-sm-4"><img src="smile2.png"></img></div>
+                <div class="col-sm-8">
+                    <h2>Finally a great source of kneweledge</h2>
+                    <br>
+                    <p>I wanted to start investing in crypto for a long time and pyramid investments finally taught me the right tools to succeed</p>
+                </div>
+            </div>
+            <div class="testimonial row"> <!-- testemonial 3 -->
+                <div class="col-sm-4"><img src="smile3.png"></img></div>
+                <div class="col-sm-8">
+                    <h2>good tracking</h2>
+                    <br>
+                    <p>the tables shown on the site update in real time, the information available is precise and online supports and forums always make it so you invest for what is right for you!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainblock" id="contact"> <!-- contact -->
+        <div class="row" style="text-align:center"> <!-- headline -->
+            <div class="col-sm-12">
+                <h1>Contact us!</h1>
+                <p>got a question? need help? fill the form below! we will be happy to answer</p>
+            </div>
+        </div>
+        <div class="container hidden-xs hidden-sm" style="padding:0px; margin-bottom: 5px"> <!--desktop form-->
+            <div class="row">
+                <div class="col-sm-6"><div class="mapouter"><div class="gmap_canvas"><iframe width="1080" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=birobidzan&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:500px;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:100%;}</style></div></div>
+                <div class="col-sm-6" style="padding:0px">
+                    <div class="container form-group" style="color:white">
+                        <div class="row">
+                            <div class="col-sm-3">Name:<input type="text" class="form-control"></div>
+                            <div class="col-sm-3">E-mail:<input type="text" class="form-control"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Your Question:<textarea class="form-control" rows="3"></textarea></div>
+                        </div>
+                        <div class="row" style="margin-top: 15px">
+                            <div class="col-sm-6" style="display: inline; text-align: center"><input type="button" class="btn btn-primary" value="send"></div>
+                        </div>
+                        <div class="row" style="margin-top:50px">
+                            <div class="col-sm-6">
+                                <div style="display:inline"><img src="logo.svg" style="width:50px"></div>
+                                <h2>Pyramid Scheme</h2>
+                                <p style="font-weight:bold">Main office</p>
+                                <p>80 Shkol'naya Ulitsa, Birobidzhan, Jewish Autonomous Oblast, USSR 679002</p>
+                                <p style="font-weight:bold">Call us</p>
+                                <p>1-700-70-70-70</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container form-group hidden-md hidden-lg hidden-xl" style="color:white"> <!-- Mobile form-->
+            
+            <div class="row">
+                <div class="col-sm-6"> Name: <input type="text" class="form-control"></div>
+                <div class="col-sm-6"> E-mail: <input type="text" class="form-control"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12"> Your Question: <textarea class="form-control" rows="3"></textarea></div>
+            </div>
+            <div class="row" style="margin-top: 15px">
+                <div class="col-sm-12" style="display: inline; text-align: center"><input type="button" class="btn btn-primary" value="send"></div>
+                <div class="col-sm-12" style="margin-top:10px;"><div class="mapouter"><div class="gmap_canvas"><iframe width="1080" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=birobidzan&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:500px;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:100%;}</style></div></div>
+            </div>
+            <div class="row" style="margin-top:10px;">
+                <div class="col-sm-12">
+                    <div style="display:inline"><img src="logo.svg" style="width:50px"></div>
+                    <h2>Pyramid Scheme</h2>
+                    <p style="font-weight:bold">Main office</p>
+                    <p>80 Shkol'naya Ulitsa, Birobidzhan, Jewish Autonomous Oblast, USSR 679002</p>
+                    <p style="font-weight:bold">Call us</p>
+                    <p>076-8844400</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 25px; margin-bottom:25px"><!-- footer -->
+        <div class="row">
+            <div class="col-sm-12">
+                <p>Thanks for looking at my site, here is a spinner</p><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="color:#F7DC6F; font-size: 20px"></span>
+            </div>
+        </div>
+    </div>
+    <!-- Website code ends here -->
+
+    <script> //scripts for the website
+
+        //script for: currencies - desktop
+            $(".dcollapsebtn").click(function(){
+                $(".collapse").collapse('hide');  
+                $(".currdiv").removeClass('currdivopen');
+            }); //closes everything
+            $("#dbtncollapse1").click(function(){
+                $("#dcollapse1").collapse('show');
+                $(this).toggleClass('currdivopen');
+            }); //opens1
+            $("#dbtncollapse2").click(function(){
+                $("#dcollapse2").collapse('show');
+                $(this).toggleClass('currdivopen');
+            }); //opens2
+            $("#dbtncollapse3").click(function(){
+                $("#dcollapse3").collapse('show');
+                $(this).toggleClass('currdivopen');
+            }); //opens3
+            $("#dbtncollapse4").click(function(){
+                $("#dcollapse4").collapse('show');
+                $(this).toggleClass('currdivopen');
+            }); //opens4
+
+        //script for: currencies - mobile
+            $(".collapsebtn").click(function(){
+                $(".collapse").collapse('hide');
+                $(".currdiv").removeClass('currdivopen');   
+            }); //closes everything
+            $("#btncollapse1").click(function(){
+                $("#collapse1").collapse('show');
+                $(this).toggleClass('currdivopen');
+            }); //opens1
+            $("#btncollapse2").click(function(){
+                $("#collapse2").collapse('show');
+                $(this).toggleClass('currdivopen');
+            }); //opens2
+            $("#btncollapse3").click(function(){
+                $("#collapse3").collapse('show');
+                $(this).toggleClass('currdivopen');
+            }); //opens3
+            $("#btncollapse4").click(function(){
+                $("#collapse4").collapse('show');
+                $(this).toggleClass('currdivopen');
+            }); //opens4
+
+        //end of script for: currencies
+
+    </script>
+
+</body>
+</html>
